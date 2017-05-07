@@ -1,11 +1,11 @@
 {
-  "name": "bookmarks",
+  "name": "store",
   "version": "1.0.0",
   "author": {
     "name": "Shobhit Khandelwal",
     "email": "shobhitnkhandelwal@gmail.com"
   },
-  "description": "Bookmarks",
+  "description": "Online store",
   "main": "dist/api.js",
   "engines": {
     "node": ">=4.4.0"
@@ -14,7 +14,9 @@
     "dist",
     "README.md"
   ],
-  "scripts": {},
+  "scripts": {
+    "start": "node dist/api.js"
+  },
   "repository": {
     "type": "git",
     "url": ""
