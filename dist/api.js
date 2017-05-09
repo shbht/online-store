@@ -42,7 +42,7 @@ app.set("tokenSecret", authSecretKey);
 app.use(_bodyParser2.default.json());
 app.use(_bodyParser2.default.urlencoded({ "extended": true }));
 
-app.use((0, _expressJwt2.default)({ "secret": authSecretKey }).unless({
+app.use((0, _expressJwt2.default)({ "secret": app.get("tokenSecret") }).unless({
   "path": ["/user", "/user/login", "/healthcheck"]
 }));
 

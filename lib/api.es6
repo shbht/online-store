@@ -19,7 +19,7 @@ app.set("tokenSecret", authSecretKey);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({"extended": true}));
 
-app.use(expressJwt({"secret": authSecretKey}).unless(
+app.use(expressJwt({"secret": app.get("tokenSecret")}).unless(
   {
     "path": [
       "/user",

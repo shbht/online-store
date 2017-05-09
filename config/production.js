@@ -11,7 +11,7 @@ var environmentVariables = require("./environmentVariables"),
     },
     "appName": "bookmarks",
     "mongoDb": {
-      "connectionString": "mongodb://127.0.0.1:27017/store_test",
+      "connectionString": environmentVariables.MONGO_CONNECTION_STRING,
       "operationTimeout": 4000,
       "connectionOptions": {
         "server": {
