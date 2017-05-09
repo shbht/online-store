@@ -15,13 +15,13 @@ function mwAuthenticate(req, res, next) {
   if (!config.authorization.authorize) {
     console.log("Authentication is disabled by confguration");
 
-    return next(new ApiError(req.id, "Forbidden", "Server understood the request " +
+    return next(new Error(req.id, "Forbidden", "Server understood the request " +
       "but is refusing to fulfill it", "", 403));
   }
 
   if (!token || !tokenRegex.test(token)) {
     console.log("Authentication credentials were missing or incorrect");
-    let err = new ApiError(req.id, "Unauthorized", "Authentication credentials missing or incorrect", 401);
+    let err = new Error(req.id, "Unauthorized", "Authentication credentials missing or incorrect", 401);
 
     return next(err);
   }
@@ -35,7 +35,7 @@ function mwAuthenticate(req, res, next) {
     .then(data => {
       if (data.iss !== "node-bridge") {
         console.log("Authentication credentials are incorrect. Issuer cannot be verified.");
-        let err = new ApiError(req.id, "Unauthorized", "Authentication credentials missing or incorrect", 401);
+        let err = new Error(req.id, "Unauthorized", "Authentication credentials missing or incorrect", 401);
 
         return next(err);
       }
@@ -47,7 +47,7 @@ function mwAuthenticate(req, res, next) {
 
     }, failure => {
       console.log("Unable to verify the supplied token", failure);
-      return next(new ApiError(req.id, "Bad Request", "Token Verification Failed", "", 400));
+      return next(new Error(req.id, "Bad Request", "Token Verification Failed", "", 400));
     });
 }
 

@@ -11,7 +11,7 @@ var environmentVariables = require("./environmentVariables"),
     },
     "appName": "bookmarks",
     "mongoDb": {
-      "connectionString": environmentVariables.MONGO_CONNECTION_STRING,
+      "connectionString": "mongodb://127.0.0.1:27017/store_test",
       "operationTimeout": 4000,
       "connectionOptions": {
         "server": {
@@ -26,7 +26,7 @@ var environmentVariables = require("./environmentVariables"),
       },
       "promiseTimeout": 4500
     },
-    "authSecretKey": environmentVariables.AUTH_SECRET_KEY
+    "urlPrefix": "/bookmarks"
   };
 
 module.exports = config;

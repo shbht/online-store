@@ -24,9 +24,14 @@
   "dependencies": {
     "babel-polyfill": "^6.7.4",
     "body-parser": "^1.15.0",
+    "chai-http": "^3.0.0",
     "express": "^4.13.4",
+    "express-jwt": "^5.3.0",
+    "jsonwebtoken": "^7.4.0",
     "method-override": "^2.3.5",
+    "mongodb": "^2.2.26",
     "mongoose": "^4.9.7",
+    "node-uuid": "^1.4.8",
     "q": "^1.4.1"
   },
   "devDependencies": {
@@ -38,6 +43,8 @@
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-eslint": "^17.1.0",
-    "grunt-jscs": "^2.0.0"
+    "grunt-jscs": "^2.0.0",
+    "grunt-mocha-test": "^0.13.2",
+    "mocha": "^3.3.0"
   }
 }

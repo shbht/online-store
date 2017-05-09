@@ -49,7 +49,7 @@ module.exports = function (grunt) {
           "quiet": false,
           "timeout": 2000
         },
-        "src": ["test/dist/**/*.spec.js"]
+        "src": ["test/**/*.js"]
       }
     },
     "watch": {
@@ -73,7 +73,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks("grunt-babel");
   grunt.loadNpmTasks("grunt-eslint");
   grunt.loadNpmTasks("grunt-contrib-watch");
-  // grunt.loadNpmTasks("grunt-mocha-test");
+  grunt.loadNpmTasks("grunt-mocha-test");
   grunt.loadNpmTasks("grunt-contrib-clean");
   grunt.loadNpmTasks("grunt-jscs");
 

@@ -1,23 +1,20 @@
 "use strict";
 
 import express from "express";
-import logger from "../../util/FocusApiLogger";
-import {getConnectionPoolInstance} from "../../mongodb/MongoDbConnectionPool";
-import {AvgWaitTimePerPatientService} from "./services/AvgWaitTimePerPatientService";
-import {DomainServiceMaster} from "../../reusable/DomainServiceMaster";
-import {ServiceResponseHandler} from "../../reusable/ServiceResponseHandler";
+import {UserService} from "./UserService";
 
 let router = express.Router(),
   {NODE_ENV} = process.env,
   nodeEnv = NODE_ENV || "local",
   config = Object.freeze(require("../../../config/" + nodeEnv)),
-  dbPoolInstance = getConnectionPoolInstance(config, logger),
-  serviceResHandler = new ServiceResponseHandler(),
-  domainServiceMaster = new DomainServiceMaster(dbPoolInstance, logger),
-  serviceInstance = new AvgWaitTimePerPatientService(dbPoolInstance, domainServiceMaster, serviceResHandler, logger),
-  avgWaitTimeRootRoute = router.route("/avgWaitingTimePerPatient");
+  serviceInstance = new UserService(config),
+  userRoute = router.route("/"),
+  loginRoute = router.route("/login");
 
-avgWaitTimeRootRoute
-  .get(serviceInstance.calculate.bind(serviceInstance));
+userRoute
+  .post(serviceInstance.createUser.bind(serviceInstance));
+
+loginRoute
+  .post(serviceInstance.login.bind(serviceInstance));
 
 export default router;

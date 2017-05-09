@@ -1,8 +1,6 @@
 node_modules
 PDF
 test_results.txt
-dist/**/*.js
-dist/**/*.js.map
 test/dist/**/*.js
 test/dist/**/*.js.map
 npm-debug.log

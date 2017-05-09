@@ -7,10 +7,14 @@ let router = express.Router(),
   {NODE_ENV} = process.env,
   nodeEnv = NODE_ENV || "local",
   config = Object.freeze(require("../../../config/" + nodeEnv)),
-  serviceInstance = new ProductService(),
-  productRoute = router.route("/product");
+  serviceInstance = new ProductService(config),
+  productRoute = router.route("/"),
+  productParamRoute = router.route("/:id");
 
 productRoute
+  .get(serviceInstance.listAll.bind(serviceInstance));
+
+productParamRoute
   .get(serviceInstance.search.bind(serviceInstance));
 
 productRoute
@@ -19,7 +23,7 @@ productRoute
 productRoute
   .put(serviceInstance.update.bind(serviceInstance));
 
-productRoute
+productParamRoute
   .delete(serviceInstance.remove.bind(serviceInstance));
 
 export default router;
