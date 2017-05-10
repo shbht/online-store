@@ -8,7 +8,7 @@
   "description": "Online store",
   "main": "dist/api.js",
   "engines": {
-    "node": ">=4.4.0"
+    "node": "4.4.0"
   },
   "files": [
     "dist",
