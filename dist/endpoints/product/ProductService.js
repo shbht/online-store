@@ -93,15 +93,16 @@ var ProductService = exports.ProductService = function () {
     key: "update",
     value: function update(req, res) {
       var collection = "product",
+          query = {
+        "_id": req.params.id
+      },
           document = {
-        "name": req.body.name,
-        "description": req.body.description,
-        "supplier": req.body.supplier,
-        "status": req.body.status,
-        "updatedAt": new Date()
+        "$set": { "status": req.body.status,
+          "updatedAt": new Date()
+        }
       };
 
-      this.dbSerivce.insert({ collection: collection, document: document }).then(function () {
+      this.dbSerivce.update({ collection: collection, query: query, document: document }).then(function () {
         res.status(200).send();
       }).catch(function (err) {
         throw err;

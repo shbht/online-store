@@ -85,15 +85,16 @@ export class ProductService {
 
   update(req, res) {
     let collection = "product",
+      query = {
+        "_id": req.params.id
+      },
       document = {
-        "name": req.body.name,
-        "description": req.body.description,
-        "supplier": req.body.supplier,
-        "status": req.body.status,
-        "updatedAt": new Date()
+        "$set": {"status": req.body.status,
+          "updatedAt": new Date()
+        }
       };
 
-    this.dbSerivce.insert({collection, document})
+    this.dbSerivce.update({collection, query, document})
       .then(() => {
         res.status(200).send();
       })

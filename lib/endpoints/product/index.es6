@@ -20,7 +20,7 @@ productParamRoute
 productRoute
   .post(serviceInstance.insert.bind(serviceInstance));
 
-productRoute
+productParamRoute
   .put(serviceInstance.update.bind(serviceInstance));
 
 productParamRoute

@@ -79,12 +79,12 @@ module.exports = function (grunt) {
 
   // Default task.
   grunt.registerTask("default", [
-    "buildCommon"
-    // "testCommon"
+    "build",
+    "test"
   ]);
 
   // Common build task
-  grunt.registerTask("buildCommon", [
+  grunt.registerTask("build", [
     "clean",
     "babel",
     "eslint",
@@ -92,7 +92,7 @@ module.exports = function (grunt) {
   ]);
 
   // Common test task
-  grunt.registerTask("testCommon", [
+  grunt.registerTask("test", [
     "mochaTest:test"
   ]);
 };

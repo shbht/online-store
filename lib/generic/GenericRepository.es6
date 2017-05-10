@@ -100,8 +100,8 @@ export class GenericRepository {
 
   /**
    *@param {string} collection collection to be used for query
-   *@param {object} query query object which contains body(filter query), fields, limit, skip, sort fields
-   *@returns {Q.Promise} returns promise for read query
+   *@param {object} query query object which contains filter query
+   *@returns {Q.Promise} returns promise
    */
   remove({collection, query}) {
 
@@ -109,6 +109,22 @@ export class GenericRepository {
       .then(db => {
         return Q.ninvoke(
           db.collection(collection), "remove", query
+        );
+      });
+  }
+
+  /**
+   *@param {string} collection collection to be used for query
+   *@param {object} query query object which contains filter query
+   *@param {object} document the fields/vals to be updated
+   *@returns {Q.Promise} returns promise
+   */
+  update({collection, query, document}) {
+
+    return this.getMongoDBObject()
+      .then(db => {
+        return Q.ninvoke(
+          db.collection(collection), "update", query, document
         );
       });
   }

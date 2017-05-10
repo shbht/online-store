@@ -131,8 +131,8 @@ var GenericRepository = exports.GenericRepository = function () {
 
     /**
      *@param {string} collection collection to be used for query
-     *@param {object} query query object which contains body(filter query), fields, limit, skip, sort fields
-     *@returns {Q.Promise} returns promise for read query
+     *@param {object} query query object which contains filter query
+     *@returns {Q.Promise} returns promise
      */
 
   }, {
@@ -144,6 +144,26 @@ var GenericRepository = exports.GenericRepository = function () {
 
       return this.getMongoDBObject().then(function (db) {
         return _q2.default.ninvoke(db.collection(collection), "remove", query);
+      });
+    }
+
+    /**
+     *@param {string} collection collection to be used for query
+     *@param {object} query query object which contains filter query
+     *@param {object} document the fields/vals to be updated
+     *@returns {Q.Promise} returns promise
+     */
+
+  }, {
+    key: "update",
+    value: function update(_ref4) {
+      var collection = _ref4.collection,
+          query = _ref4.query,
+          document = _ref4.document;
+
+
+      return this.getMongoDBObject().then(function (db) {
+        return _q2.default.ninvoke(db.collection(collection), "update", query, document);
       });
     }
   }]);

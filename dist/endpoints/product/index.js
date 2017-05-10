@@ -27,7 +27,7 @@ productParamRoute.get(serviceInstance.search.bind(serviceInstance));
 
 productRoute.post(serviceInstance.insert.bind(serviceInstance));
 
-productRoute.put(serviceInstance.update.bind(serviceInstance));
+productParamRoute.put(serviceInstance.update.bind(serviceInstance));
 
 productParamRoute.delete(serviceInstance.remove.bind(serviceInstance));
 
