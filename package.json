@@ -15,7 +15,6 @@
     "README.md"
   ],
   "scripts": {
-    "postinstall": "grunt",
     "start": "node dist/api.js"
   },
   "repository": {
