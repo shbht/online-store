@@ -46,9 +46,7 @@ var ProductService = exports.ProductService = function () {
     value: function remove(req, res) {
       var collection = "product",
           query = {
-        "body": {
-          "_id": req.params.id
-        }
+        "_id": req.params.id
       };
 
       this.dbSerivce.remove({ collection: collection, query: query }).then(function () {

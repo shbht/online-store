@@ -35,9 +35,7 @@ export class ProductService {
   remove(req, res) {
     let collection = "product",
       query = {
-        "body": {
-          "_id": req.params.id
-        }
+        "_id": req.params.id
       };
 
     this.dbSerivce.remove({collection, query})

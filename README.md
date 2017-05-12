@@ -9,7 +9,13 @@
     npm install
     ```
 
-2. Start the application
+2. Runs eslint, babel:dist and mochaTest
+
+    ```
+    grunt
+    ```
+
+3. Start the application
 
     ```
     node dist/api.js
@@ -26,17 +32,11 @@
 * Runs the tests (the same as ```npm test```) 
 
     ```
-    grunt mochatest
+    grunt test
     ```
 
 * Compiles the .es6 files to .js
  
     ```
-    grunt babel:dist
-    ```
-
-* Lints the .es6 files
-
-    ```
-    grunt eslint
+    grunt babel
     ```
